@@ -132,4 +132,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#necessary for uv to work
 . "$HOME/.local/bin/env"
+
+typeset -aU path
+
+export_to_path() {
+  local dir="$1"
+  if [[ -d "$dir" ]]; then
+    path=("$dir" $path)
+  fi
+}
+
+export_to_path "/snap/bin"
