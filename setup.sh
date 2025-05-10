@@ -133,6 +133,7 @@ install_tools() {
     tar -xvf linux-amd64-1.1.0.tar.gz
     sudo mv linux-amd64-1.1.0/ccat /usr/bin/
     rm linux-amd64-1.1.0.tar.gz
+    curl -LsSf https://astral.sh/uv/install.sh | sh 
     if grep -i "Microsoft" /proc/sys/kernel/osrelease; then
         echo "You are inside WSL. Skipping font installation."
     else
