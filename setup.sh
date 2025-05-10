@@ -151,12 +151,15 @@ else
         case "$arg" in
             --zsh)
                 INSTALL_ZSH=true
+                INSTALL_TOOLS=true
                 ;;
             --tmux)
                 INSTALL_TMUX=true
+                INSTALL_TOOLS=true
                 ;;
             --docker)
                 INSTALL_DOCKER=true
+                INSTALL_TOOLS=true
                 ;;
             --tools)
                 INSTALL_TOOLS=true
