@@ -55,6 +55,7 @@ install_zsh() {
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
         git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+        pip install virtualenvwrapper
         cat .zshrc > $HOME/.zshrc
         chsh -s "$(which zsh)"
         zsh
@@ -116,12 +117,12 @@ install_docker() {
 install_tools() {
     banner "Installing Utilities (btop, net-tools, duf...)"
 
-    install_package btop net-tools git eza fzf unzip wget
+    install_package btop net-tools git eza fzf unzip wget vim python3-pip q
     sudo snap install dust
     cd ~
     wget https://github.com/owenthereal/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
     tar -xvf linux-amd64-1.1.0.tar.gz
-    sudo mv ccat /usr/bin/
+    sudo mv linux-amd64-1.1.0/ccat /usr/bin/
     rm linux-amd64-1.1.0.tar.gz
     banner "Installing Nerd Fonts (FiraCode)"
     mkdir -p ~/.local/share/fonts
