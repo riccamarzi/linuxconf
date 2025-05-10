@@ -64,6 +64,7 @@ install_zsh() {
         cat .zshrc > $HOME/.zshrc
         cd -
         chsh -s "$(which zsh)"
+        banner "All tasks completed!"
         zsh
     else
         echo -e "${YELLOW}Oh My Zsh already installed.${RESET}"
@@ -132,8 +133,8 @@ install_tools() {
     tar -xvf linux-amd64-1.1.0.tar.gz
     sudo mv linux-amd64-1.1.0/ccat /usr/bin/
     rm linux-amd64-1.1.0.tar.gz
-    if grep -q "Microsoft" /proc/sys/kernel/osrelease; then
-    echo "You are inside WSL. Skipping font installation."
+    if grep -i "Microsoft" /proc/sys/kernel/osrelease; then
+        echo "You are inside WSL. Skipping font installation."
     else
         banner "Not inside WSL. Installing fonts."
         # Aggiungi qui la tua installazione di font
@@ -202,4 +203,4 @@ detect_pkg_manager
 [ "$INSTALL_DOCKER" = true ] && install_docker
 [ "$INSTALL_ZSH" = true ] && install_zsh
 
-banner "All tasks completed!"
+# banner "All tasks completed!"
