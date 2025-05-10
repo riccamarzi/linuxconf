@@ -126,7 +126,14 @@ install_docker() {
 install_tools() {
     banner "Installing Utilities (btop, net-tools, duf...)"
 
-    install_package btop net-tools git eza fzf unzip wget vim python3-pip 
+    install_package btop net-tools git fzf unzip wget vim python3-pip gpg
+    if [ "$PKG_MANAGER" = "apt" ]; then
+        sudo mkdir -p /etc/apt/keyrings
+        wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+        echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+        sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+    fi
+    install_package eza
     sudo snap install dust
     cd ~
     wget https://github.com/owenthereal/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
@@ -135,10 +142,9 @@ install_tools() {
     rm linux-amd64-1.1.0.tar.gz
     curl -LsSf https://astral.sh/uv/install.sh | sh 
     if grep -i "Microsoft" /proc/sys/kernel/osrelease; then
-        echo "You are inside WSL. Skipping font installation."
+        echo -e "${YELLOW}You are inside WSL. Skipping font installation.${RESET}"
     else
         banner "Not inside WSL. Installing fonts."
-        # Aggiungi qui la tua installazione di font
         banner "Installing Nerd Fonts (FiraCode)"
         mkdir -p ~/.local/share/fonts
         cd /tmp
