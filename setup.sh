@@ -132,14 +132,20 @@ install_tools() {
     tar -xvf linux-amd64-1.1.0.tar.gz
     sudo mv linux-amd64-1.1.0/ccat /usr/bin/
     rm linux-amd64-1.1.0.tar.gz
-    banner "Installing Nerd Fonts (FiraCode)"
-    mkdir -p ~/.local/share/fonts
-    cd /tmp
-    curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
-    unzip -o FiraCode.zip -d FiraCode
-    cp FiraCode/*.ttf ~/.local/share/fonts/
-    fc-cache -fv
-    cd -  
+    if grep -q "Microsoft" /proc/sys/kernel/osrelease; then
+    echo "You are inside WSL. Skipping font installation."
+    else
+        banner "Not inside WSL. Installing fonts."
+        # Aggiungi qui la tua installazione di font
+        banner "Installing Nerd Fonts (FiraCode)"
+        mkdir -p ~/.local/share/fonts
+        cd /tmp
+        curl -fLo "FiraCode.zip" https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.zip
+        unzip -o FiraCode.zip -d FiraCode
+        cp FiraCode/*.ttf ~/.local/share/fonts/
+        fc-cache -fv
+        cd -  
+    fi
 }
 
 # === Parsing parametri ===
