@@ -74,7 +74,7 @@ install_tmux() {
         git clone https://github.com/gpakosz/.tmux.git ~/.oh-my-tmux
         ln -s -f ~/.oh-my-tmux/.tmux.conf ~/.tmux.conf
         cp ~/.oh-my-tmux/.tmux.conf.local ~/
-        git clone https://github.com/tmux-plugins/tmux-resurrect ~/
+        git clone https://github.com/tmux-plugins/tmux-resurrect ~/tmux-resurrect
         cat .tmux.conf.local > $HOME/.tmux.conf.local
     else
         echo -e "${YELLOW}Oh My Tmux already installed.${RESET}"
