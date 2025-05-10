@@ -2,14 +2,13 @@
 
 REPO_ROOT_DIR=$(dirname "$(realpath "$0")")
 
-# === Colori ===
+# === Colors ===
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
 YELLOW=$(tput setaf 3)
 CYAN=$(tput setaf 6)
 RESET=$(tput sgr0)
 
-# === Funzione banner ===
 banner() {
     echo -e "${CYAN}"
     echo "===================================="
@@ -18,7 +17,6 @@ banner() {
     echo -e "${RESET}"
 }
 
-# === Funzione per rilevare package manager ===
 detect_pkg_manager() {
     if command -v apt >/dev/null 2>&1; then
         PKG_MANAGER="apt"
@@ -40,8 +38,6 @@ install_package() {
         sudo dnf install -y "${PACKAGES[@]}"
     fi
 }
-
-# === Funzioni installazione ===
 
 install_zsh() {
     banner "Installing Oh My Zsh"
@@ -159,7 +155,6 @@ install_tools() {
     fi
 }
 
-# === Parsing parametri ===
 
 INSTALL_ZSH=false
 INSTALL_TMUX=false
@@ -204,13 +199,9 @@ else
     done
 fi
 
-# === Detect distro & package manager ===
 detect_pkg_manager
 
-# === Installazioni richieste ===
 [ "$INSTALL_TOOLS" = true ] && install_tools
 [ "$INSTALL_TMUX" = true ] && install_tmux
 [ "$INSTALL_DOCKER" = true ] && install_docker
 [ "$INSTALL_ZSH" = true ] && install_zsh
-
-# banner "All tasks completed!"
