@@ -45,7 +45,7 @@ install_zsh() {
     banner "Installing Oh My Zsh"
     if ! command -v zsh >/dev/null 2>&1; then
         echo -e "${GREEN}Zsh not found, installing...${RESET}"
-        install_package zsh
+        install_package zsh zsh-doc
     fi
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo -e "${GREEN}Installing Oh My Zsh framework...${RESET}"
@@ -116,7 +116,13 @@ install_docker() {
 install_tools() {
     banner "Installing Utilities (btop, net-tools, duf...)"
 
-    install_package btop net-tools dust ccat git eza fzf
+    install_package btop net-tools git eza fzf unzip wget
+    sudo snap install dust
+    cd ~
+    wget https://github.com/owenthereal/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
+    tar -xvf linux-amd64-1.1.0.tar.gz
+    sudo mv ccat /usr/bin/
+    rm linux-amd64-1.1.0.tar.gz
     banner "Installing Nerd Fonts (FiraCode)"
     mkdir -p ~/.local/share/fonts
     cd /tmp
