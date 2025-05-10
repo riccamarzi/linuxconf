@@ -126,7 +126,7 @@ install_docker() {
 install_tools() {
     banner "Installing Utilities (btop, net-tools, dust...)"
 
-    install_package btop net-tools git fzf unzip wget vim python3-pip gpg
+    install_package btop net-tools git fzf unzip wget vim python3-pip gpg openssh-server
     if [ "$PKG_MANAGER" = "apt" ]; then
         sudo mkdir -p /etc/apt/keyrings
         wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
