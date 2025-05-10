@@ -30,7 +30,7 @@ cd linuxconf
 | `--zsh`    | Install only Oh My Zsh          |
 | `--tmux`   | Install only Oh My Tmux         |
 | `--docker` | Install only Docker             |
-| `--tools`  | Install only btop, net-tools, dust, git, ccat |
+| `--tools`  | Install only btop, net-tools, dust, git, ccat ... |
 
 ### Examples
 
@@ -40,10 +40,10 @@ Install everything:
 ./setup.sh --all
 ```
 
-Install only Docker and tools:
+Install only Docker and tmux:
 
 ```bash
-./setup.sh --docker --tools
+./setup.sh --docker --tmux
 ```
 
 ## After installation
@@ -56,7 +56,3 @@ Install only Docker and tools:
 
 - Ubuntu 20.04+ / Debian 11+
 - Fedora 37+
-
-## License
-
-MIT License

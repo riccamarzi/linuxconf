@@ -124,7 +124,7 @@ install_docker() {
 }
 
 install_tools() {
-    banner "Installing Utilities (btop, net-tools, duf...)"
+    banner "Installing Utilities (btop, net-tools, dust...)"
 
     install_package btop net-tools git fzf unzip wget vim python3-pip gpg
     if [ "$PKG_MANAGER" = "apt" ]; then
