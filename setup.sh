@@ -1,5 +1,7 @@
 #!/bin/bash
 
+REPO_ROOT_DIR=$(dirname "$(realpath "$0")")
+
 # === Colori ===
 RED=$(tput setaf 1)
 GREEN=$(tput setaf 2)
@@ -50,13 +52,17 @@ install_zsh() {
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo -e "${GREEN}Installing Oh My Zsh framework...${RESET}"
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+        cd $REPO_ROOT_DIR
         cat .oh-my-zsh/custom/aliases.zsh > $HOME/.oh-my-zsh/custom/aliases.zsh
+        cd -
         git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
         git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
         git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
         git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
-        pip install virtualenvwrapper
+        install_package python3-virtualenvwrapper
+        cd $REPO_ROOT_DIR
         cat .zshrc > $HOME/.zshrc
+        cd -
         chsh -s "$(which zsh)"
         zsh
     else
@@ -76,7 +82,9 @@ install_tmux() {
         ln -s -f ~/.oh-my-tmux/.tmux.conf ~/.tmux.conf
         cp ~/.oh-my-tmux/.tmux.conf.local ~/
         git clone https://github.com/tmux-plugins/tmux-resurrect ~/tmux-resurrect
+        cd $REPO_ROOT_DIR
         cat .tmux.conf.local > $HOME/.tmux.conf.local
+        cd -
     else
         echo -e "${YELLOW}Oh My Tmux already installed.${RESET}"
     fi
@@ -117,7 +125,7 @@ install_docker() {
 install_tools() {
     banner "Installing Utilities (btop, net-tools, duf...)"
 
-    install_package btop net-tools git eza fzf unzip wget vim python3-pip q
+    install_package btop net-tools git eza fzf unzip wget vim python3-pip 
     sudo snap install dust
     cd ~
     wget https://github.com/owenthereal/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
