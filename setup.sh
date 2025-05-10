@@ -180,8 +180,8 @@ detect_pkg_manager
 
 # === Installazioni richieste ===
 [ "$INSTALL_TOOLS" = true ] && install_tools
-[ "$INSTALL_ZSH" = true ] && install_zsh
 [ "$INSTALL_TMUX" = true ] && install_tmux
 [ "$INSTALL_DOCKER" = true ] && install_docker
+[ "$INSTALL_ZSH" = true ] && install_zsh
 
 banner "All tasks completed!"

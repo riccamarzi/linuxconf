@@ -13,10 +13,13 @@ A simple bash script to quickly install **Oh My Zsh**, **Oh My Tmux**, **Docker*
 
 ## Quick install
 
-Run the script directly from GitHub:
+Clone the repo from GitHub and execute all:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/riccamarzi/linuxconf/main/setup.sh)
+git clone https://github.com/riccamarzi/linuxconf.git
+cd linuxconf
+./setup.sh
+
 ```
 
 ## Usage
@@ -34,13 +37,13 @@ bash <(curl -fsSL https://raw.githubusercontent.com/riccamarzi/linuxconf/main/se
 Install everything:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/riccamarzi/linuxconf/main/setup.sh) --all
+./setup.sh --all
 ```
 
 Install only Docker and tools:
 
 ```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/riccamarzi/linuxconf/main/setup.sh) --docker --tools
+./setup.sh --docker --tools
 ```
 
 ## After installation
