@@ -43,7 +43,7 @@ install_zsh() {
     banner "Installing Oh My Zsh"
     if ! command -v zsh >/dev/null 2>&1; then
         echo -e "${GREEN}Zsh not found, installing...${RESET}"
-        install_package zsh zsh-doc
+        install_package zsh zsh-doc python3-pygments
     fi
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo -e "${GREEN}Installing Oh My Zsh framework...${RESET}"
