@@ -43,7 +43,7 @@ install_zsh() {
     banner "Installing Oh My Zsh"
     if ! command -v zsh >/dev/null 2>&1; then
         echo -e "${GREEN}Zsh not found, installing...${RESET}"
-        install_package zsh zsh-doc python3-pygments
+        install_package zsh zsh-doc python3-pygments curl
     fi
     if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo -e "${GREEN}Installing Oh My Zsh framework...${RESET}"
@@ -129,7 +129,7 @@ install_tools() {
         echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
         sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     fi
-    install_package eza
+    install_package eza curl
     sudo snap install dust
     cd ~
     wget https://github.com/owenthereal/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
