@@ -56,7 +56,7 @@ install_zsh() {
         git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
         git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
-        cp .p10k.zsh $HOME/.p10k.zsh
+        cat .p10k.zsh > $HOME/.p10k.zsh
 
         install_package python3-virtualenvwrapper
         cd $REPO_ROOT_DIR
@@ -143,7 +143,7 @@ install_tools() {
     cp .vimrc ~/.vimrc
     cd -
     curl -LsSf https://astral.sh/uv/install.sh | sh 
-    uv tool install ruff@latest
+    $HOME/.local/bin/uv tool install ruff@latest
     if grep -i "Microsoft" /proc/sys/kernel/osrelease; then
         echo -e "${YELLOW}You are inside WSL. Skipping font installation.${RESET}"
     else
