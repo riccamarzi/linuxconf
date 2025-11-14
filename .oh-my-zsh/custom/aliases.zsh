@@ -1,6 +1,10 @@
 alias cat="ccat"
 alias svenv='sudo $(which python3)'
 alias ls="eza --icons=always"
-alias ll="eza -lg --icons=always"
-alias la="eza -alg --icons=always"
+alias ll="eza -lhgmU --group-directories-first --git --icons=always"
+alias la="eza -alghmU --group-directories-first --git --icons=always"
 alias du="dust"
+alias aud="sudo apt update"
+alias aug="sudo apt upgrade"
+alias ain="sudo apt install"
+alias cta="ccat"
