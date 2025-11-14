@@ -61,7 +61,7 @@ install_zsh() {
         mkdir -p $HOME/.oh-my-zsh/custom/completions
         cp -r .oh-my-zsh/custom/completions $HOME/.oh-my-zsh/custom/
         cd -
-        
+
         install_package python3-virtualenvwrapper
         cd $REPO_ROOT_DIR
         cat .zshrc > $HOME/.zshrc
@@ -218,3 +218,5 @@ detect_pkg_manager
 [ "$INSTALL_TMUX" = true ] && install_tmux
 [ "$INSTALL_DOCKER" = true ] && install_docker
 [ "$INSTALL_ZSH" = true ] && install_zsh
+
+cd $HOME
