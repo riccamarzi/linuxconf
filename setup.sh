@@ -56,8 +56,12 @@ install_zsh() {
         git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
         git clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+        cd $REPO_ROOT_DIR
         cp .p10k.zsh $HOME/.p10k.zsh
-
+        mkdir -p $HOME/.oh-my-zsh/custom/completions
+        cp -r .oh-my-zsh/custom/completions $HOME/.oh-my-zsh/custom/
+        cd -
+        
         install_package python3-virtualenvwrapper
         cd $REPO_ROOT_DIR
         cat .zshrc > $HOME/.zshrc
@@ -142,6 +146,11 @@ install_tools() {
     cd $REPO_ROOT_DIR
     cp .vimrc ~/.vimrc
     cd -
+    cd /tmp \
+        && wget https://github.com/cheat/cheat/releases/download/4.4.2/cheat-linux-amd64.gz \
+        && gunzip cheat-linux-amd64.gz \
+        && chmod +x cheat-linux-amd64 \
+        && sudo mv cheat-linux-amd64 /usr/local/bin/cheat
     curl -LsSf https://astral.sh/uv/install.sh | sh 
     $HOME/.local/bin/uv tool install ruff@latest
     if grep -i "Microsoft" /proc/sys/kernel/osrelease; then
